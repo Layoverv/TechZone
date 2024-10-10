@@ -33,7 +33,7 @@
     <div id="planetas"></div>
 
     <script>
-        // Clase Planeta
+        
         class Planeta {
             constructor(nombre, cantidadSatellites, masa, volumen, diametro, distanciaAlSol, esObservable) {
                 this.nombre = nombre;
@@ -45,12 +45,12 @@
                 this.esObservable = esObservable;
             }
 
-            // Método para calcular la densidad
+            
             calcularDensidad() {
                 return this.masa / this.volumen;
             }
 
-            // Método para mostrar la información del planeta en HTML
+            
             imprimirValores() {
                 return `
                     <div class="planeta">
@@ -67,11 +67,11 @@
             }
         }
 
-        // Creación de los planetas
+        
         const p1 = new Planeta("Tierra", 1, 5.9736E24, 1.08321E12, 12742, 150000000, true);
         const p2 = new Planeta("Júpiter", 79, 1.899E27, 1.4313E15, 139820, 750000000, true);
 
-        // Mostrar los planetas en el HTML
+        
         document.getElementById('planetas').innerHTML = p1.imprimirValores() + p2.imprimirValores();
     </script>
 
