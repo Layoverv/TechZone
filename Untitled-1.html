@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planetas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .planeta {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Información de Planetas</h1>
+
+    <div id="planetas"></div>
+
+    <script>
+        // Clase Planeta
+        class Planeta {
+            constructor(nombre, cantidadSatellites, masa, volumen, diametro, distanciaAlSol, esObservable) {
+                this.nombre = nombre;
+                this.cantidadSatellites = cantidadSatellites;
+                this.masa = masa;
+                this.volumen = volumen;
+                this.diametro = diametro;
+                this.distanciaAlSol = distanciaAlSol;
+                this.esObservable = esObservable;
+            }
+
+            // Método para calcular la densidad
+            calcularDensidad() {
+                return this.masa / this.volumen;
+            }
+
+            // Método para mostrar la información del planeta en HTML
+            imprimirValores() {
+                return `
+                    <div class="planeta">
+                        <h2>${this.nombre}</h2>
+                        <p><strong>Cantidad de satélites:</strong> ${this.cantidadSatellites}</p>
+                        <p><strong>Masa:</strong> ${this.masa.toExponential(2)} kg</p>
+                        <p><strong>Volumen:</strong> ${this.volumen.toExponential(2)} m³</p>
+                        <p><strong>Diámetro:</strong> ${this.diametro} km</p>
+                        <p><strong>Distancia al sol:</strong> ${this.distanciaAlSol} km</p>
+                        <p><strong>Es observable:</strong> ${this.esObservable ? "Sí" : "No"}</p>
+                        <p><strong>Densidad:</strong> ${this.calcularDensidad().toExponential(2)} kg/m³</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Creación de los planetas
+        const p1 = new Planeta("Tierra", 1, 5.9736E24, 1.08321E12, 12742, 150000000, true);
+        const p2 = new Planeta("Júpiter", 79, 1.899E27, 1.4313E15, 139820, 750000000, true);
+
+        // Mostrar los planetas en el HTML
+        document.getElementById('planetas').innerHTML = p1.imprimirValores() + p2.imprimirValores();
+    </script>
+
+</body>
+</html>
