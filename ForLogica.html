@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Evaluación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            perspective: 1000px;
+        }
+
+        /* Fondo espacial */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.wallpaperflare.com/static/834/80/330/space-stars-digital-art-galaxy-wallpaper.jpg') no-repeat center center/cover;
+            z-index: -1;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        body:hover::before {
+            transform: scale(1.05);
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            transform: rotateY(0deg) rotateX(0deg);
+            transition: transform 0.3s ease-out;
+        }
+
+        body:hover .container {
+            transform: rotateY(10deg) rotateX(-5deg);
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .result {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .result.percent {
+            color: #e74c3c;
+        }
+
+        .divider {
+            width: 80%;
+            height: 2px;
+            background-color: #eee;
+            margin: 20px auto;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultados de Evaluación</h1>
+
+        <p>El promedio de edad de las personas que cumplen es:</p>
+        <p class="result" id="promedioEdad">-- años</p>
+
+        <p>El promedio de estatura de las personas que cumplen es:</p>
+        <p class="result" id="promedioEstatura">-- cm</p>
+
+        <p>El porcentaje de personas que cumplen con la condición es:</p>
+        <p class="result percent" id="porcentajePersonas">-- %</p>
+
+        <div class="divider"></div>
+
+        <footer>© 2024 Evaluación Personas</footer>
+    </div>
+
+    <script>
+        // Simulando los datos obtenidos del programa Java
+        var promedioEdad = 27.5; // Ejemplo: promedio de edad calculado
+        var promedioEstatura = 175.3; // Ejemplo: promedio de estatura calculado
+        var porcentajePersonas = 50; // Ejemplo: porcentaje de personas que cumplen
+
+        // Insertar los resultados en el HTML
+        document.getElementById("promedioEdad").textContent = promedioEdad + " años";
+        document.getElementById("promedioEstatura").textContent = promedioEstatura + " cm";
+        document.getElementById("porcentajePersonas").textContent = porcentajePersonas + " %";
+
+        // Añadir interactividad al fondo y al contenedor al mover el mouse
+        document.addEventListener("mousemove", (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 30;
+            const y = (window.innerHeight / 2 - e.pageY) / 30;
+
+            document.querySelector(".container").style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            document.body.style.backgroundPosition = `${x}px ${y}px`;
+        });
+    </script>
+</body>
+</html>
